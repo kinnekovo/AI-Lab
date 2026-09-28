@@ -1,0 +1,404 @@
+true_label,predicted_label,text
+7,2,"From: adler@netcom.com (Bruce Adler)
+Subject: Re: IBM-PC XT switch settings
+Organization: Netcom Online Communications Services (408-241-9760 login: guest)
+Lines: 26
+
+In article <1qk158$kcp@bigbird.hri.com> obrien@bigbird.hri.com writes:
+>I just got an IBM-PC XT with no documents. Its a true
+>IBM, and I was wondering if anyone had the definitions
+>of the 2 8 position dip switches? 
+
+SW8,SW7	number of 5.25"" drives
+0,0	1 drive
+0,1	2 drives
+1,0	3 drives
+1,1	4 drives
+
+SW6,SW5	type of display
+0,0	reserved
+0,1	40x25 color (mono mode)
+1,0	80x25 color (mono mode)
+1,1	mono 80x25
+
+SW4,SW3	amount of memory on system board
+	64k chips	256k chips
+0,0	64k		256k
+0,1	128k		512k
+1,0	192k		576k
+1,1	256k		640k
+
+SW2	co-processor installed
+SW1	loop on POST
+"
+7,2,"From: krouth@slee01.srl.ford.com (Kevin Routh)
+Subject: F.Y.I.: ImageWriter to Windows...
+Organization: Ford Motor Company Research Laboratory
+Lines: 53
+NNTP-Posting-Host: slee01.srl.ford.com
+X-Newsreader: Tin 1.1 PL5
+
+[ Article crossposted from comp.windows.ms ]
+[ Author was Kevin Routh ]
+[ Posted on 19 Apr 1993 12:35:55 GMT ]
+
+For your information:
+
+I hooked up my ImageWriter I to my COM1 serial port and used the C-Itoh
+8510 driver in Windows 3.1.  The cable I am using is a straight-thru
+cable connected to a Null Modem Adapter I got at Radio Shack (catalog
+#26-1496a) for $4.95.  It seems to work fine with both DOS and Windows.
+I used the following command in DOS
+
+	C:\DOS\mode COM1:9600,n,8,1,p
+
+and set up the port the same way in the Windows Ports setup.
+
+the Null Modem connections are as follows:
+
+	1	to	1
+	2	to	3
+	3	to	2
+	4	to	5
+	5	to	4
+	6+8	to	20
+	20	to	6+8
+	7	to	7
+
+I printed from several applications and all seems OK.  
+
+-- 
+Kevin C. Routh                     Internet:    krouth@slee01.srl.ford.com
+Ford Electronics                   IBMmail (PROFS):               USFMCTMF
+ELD IC Engineering
+17000 Rotunda Drive, B-121         Voice mail:              (313) 337-5136
+Dearborn, MI  48121-6010           Facsimile:               (313) 248-6244
+
+
+
+--
+Kevin C. Routh                     Internet:    krouth@slee01.srl.ford.com
+Ford Electronics                   IBMmail (PROFS):               USFMCTMF
+ELD IC Engineering
+17000 Rotunda Drive, B-121         Voice mail:              (313) 337-5136
+Dearborn, MI  48121-6010           Facsimile:               (313) 248-6244
+
+
+--
+Kevin C. Routh                     Internet:    krouth@slee01.srl.ford.com
+Ford Electronics                   IBMmail (PROFS):               USFMCTMF
+ELD IC Engineering
+17000 Rotunda Drive, B-121         Voice mail:              (313) 337-5136
+Dearborn, MI  48121-6010           Facsimile:               (313) 248-6244
+
+"
+7,2,"From: ray@ole.cdac.com (Ray Berry)
+Subject: Re: $25 network
+Organization: Cascade Design Automation
+Lines: 11
+
+zjoc01@hou.amoco.com (Jack O. Coats) writes:
+
+>The same folks now have out LBL (Little Big Lan) for $75.  I think you
+>get it for $50 if you already own $25 Network.  LBL works with Arcnet,
+>parallel ports, and serial ports in any combination for up to 250 or so
+>nodes.
+
+    LBL now offers ethernet support also, although presently it is limited
+to NE1000/NE2000 style boards.  LBL owners can get an update for $8.50.
+-- 
+Ray Berry kb7ht ray@ole.cdac.com  rjberry@eskimo.com  73407.3152@compuserve.com
+"
+2,7,"From: kjetilk@stud.cs.uit.no (Kjetil Kolin)
+Subject: Protected Mode ?
+Organization: University of Tromsoe
+Lines: 6
+
+Is there anybody who has (or can point me in the right direction) any
+information about protected mode? Also interested in protected mode viewed from
+a OS point of view.
+
+	Thanks in advance
+		Kjetil Kolin
+"
+2,7,"From: nsl@doe.carleton.ca (Nelson Lup Shun Liu)
+Subject: Conner CP3204F info please
+Keywords: conner
+Organization: Dept. of Electronics, Carleton University
+Lines: 11
+
+I am looking for information about this drive.  Switch settings, geometry..etc.
+
+Conner CP3204F
+
+Please reply via e-mail.  Many thanks in advance!
+
+--
+Nelson
+nsl@doe.carleton.ca
+"
+2,7,"Subject: Looking for replacement for a JVC-disk
+From: michael@pcmith.rks.se (Michael Thurbin)
+Organization: Sommarvagen 1, S-352 37 Vaxjoe, SWEDEN
+Lines: 22
+
+Hi!
+I got hold of an old Zenith 286 Laptop with model# ZWL-183-45
+
+The hard-disk is dead but the rest seems to work. I took the Zenith apart and found a very strange
+disk for wich I now try to replace.
+
+The disk is marked JVC, model JD3824R00-1.
+Has anyone any specs. on this disk or suggestion where i can find it or a cheap replacement for it.
+
+Thanks for your help.
+
+-- Michael
+
+Michael Thurbin (michael@pcmith.rks.se)
+
+-- 
+**************************************************************************************************
+Michael Thurbin
+Sommarvagen 1		Phone: +46 (0)47021340
+S-352 37 Vaxjoe		Fax:   +46 (0)47048978
+SWEDEN
+**************************************************************************************************
+"
+2,1,"Subject: Re: DOS 6.0
+From: venable@faculty.coe.wvu.edu (Wallace Venable)
+Organization: WVU College of Engineering
+Nntp-Posting-Host: 157.182.80.85
+Lines: 10
+
+
+>I know of two people who have horrer stories about the DOS 6.0.
+>That's 100% of the people I know with DOS 6.0. Both have
+>had to reformat their disks and start over.
+
+	I used the standard installation program to put MS-DOS 6.0 on my
+machine with Stacker 3.0 already installed.  No problems.  I kept Stacker,
+rather than switch.
+	I am very pleased with the memory I gained since I did not have a
+memory manager.  I also like the multiple boot feature.
+"
+2,1,"From: alee@mnemosyne.cs.du.edu (Alec Lee)
+Subject: Scan Rate vs. Font Size
+Summary: Which is more important?
+Organization: University of Denver, Dept. of Math & Comp. Sci.
+Lines: 10
+
+This past winter I found myself spending a ridiculous amout of time in front
+of my computer.  Since my eyes were going berserk, I decided to shell out
+some serious money to upgrade from a 14"" to a 17"" monitor.  I'm running
+800x600 at 72 Hz.  My eyes are very grateful.  However, I find myself using
+a smaller font with less eye strain.  Has anyone else had this kind of 
+experience?  I thought that small fonts were the culprit but it seems that
+flicker was my real problem.  Any comments?
+
+Alec Lee
+alee@cs.du.edu
+"
+2,1,"From: ted@isgtec.com (Ted Richards)
+Subject: Re: pc-X
+Distribution: usa
+Organization: ISG Technologies Inc. Mississauga Ont. Canada
+Lines: 43
+X-Newsreader: TIN [version 1.1 PL9]
+
+To following up my own note:
+Ted Richards (ted@isgtec.com) wrote:
+: Al DeVilbiss (al@col.hp.com) wrote:
+: :
+: : It looks like everything works as advertised but I am disappointed
+: : with the speed.  I'm using an Intel 400 internal 14.4k modem in the PC
+: : with Telebit 14.4k on the Unix end, which are currently limited to
+: : 19.2Kbits by the Unix com link. To get a quantitative comparison, I
+: : did 'cat file' where ""file"" is 20 kbyte uncompressed ascii text, and
+: : it took 75 seconds to scroll through an X window over the modem link,
+: : 270 chars/sec.  Using the identical hardware and Procomm+FW the same
+: : ""cat file' takes 11 seconds, 1820 chars/sec.  BTW, I use NCD PC XView
+: : on my PC at work (HP) every day for the same Unix access from a PC over
+: : a LAN and like that just fine.  The same 'cat file' scrolls by in
+: : ~2 seconds on the LAN connection.
+
+I just tried a few experiments. I cat'd a 20261-byte file (471 lines)
+under various scenarios:
+
+PC-Xview for DOS in a full-screen OS/2 window (1024x768x16):    18 sec
+Telix (DOS) in an OS/2 window (1024xs768x256):                  107 sec!
+Telix (DOS) is a full-screen OS/2 window (standard VGA):        11 sec
+Telix (DOS) in a Windows 3.1 window (1024x768x256):             30 sec
+UW/WIN in a seamless OS/2 window (1024x768x256):        gave up after 4 min!
+UW/WIN in Windows 3.1 (1024x768x256):           faster, but gave up after 2 min
+UW/WIN in a seamless OS/2 window using pg       30 sec, could have been a
+                                                little faster (I had to keep
+                                                hitting the space bar)
+
+I was using an ATI Wonder XL video card, by the way.
+
+So PC-Xview for DOS looks pretty good (and the line-by-line scrolling
+in OS/2 desktop looks pathetic, although full-page redraws are pretty
+good).
+
+I tried it under PC-Xview using my normal (9x15bold or 10x20) font,
+and with a very small font, and there was no difference in the times.
+The modem receive light was on pretty solidly, so it looks like the
+bottleneck was the 9600-baud modem, not the screen drawing.
+
+--
+Ted Richards            ted@isgtec.com             [...!uunet.ca!isgtec!ted]
+ISG Technologies Inc.   6509 Airport Rd., Mississauga  Ont.  Canada   L4V 1S7
+"
+1,2,"From: brettw@matt.ksu.ksu.edu (Brett D. Watson)
+Subject: Which sound board to buy?
+Organization: Kansas State University
+Lines: 28
+Distribution: usa
+NNTP-Posting-Host: matt.ksu.ksu.edu
+
+  Well, I've come into some money and want to buy CD-ROM, sound board
+and speakers.  I have not kept up on any material relating to sound
+boards and CD-ROM's because until now I never thought I'd have enough
+money.  
+
+  So can you guru's out there point me in the direction of a good
+package including CD-ROM, sound, and speakers (and software I
+suppose)... OR since I don't REALLY need the CD-ROM right now give me
+some good ideas for sound boards and speakers.  Those I could REALLY
+use now.  I have looked at SoundBlaster Pro, which costs about as much
+as I think I want to spend on a board (~$120), and I've looked at the
+Gravis Sound board, which is about $140 and I don't know the
+adv/disadv of either of these boards.  
+
+  Right now I want to use it with any games that support sound, and to
+use in Windows 3.1 to utilize sound capabilities there.  So any
+concise info on sound boards, complete multimedia packages, etc would
+be greatly appreciated.  If anyone else is interested in this info I
+would be glad to summarize responses and post.  
+
+  And if this is some type of FAQ please point me in the right
+direction and don't bother taking up a lot of bandwidth.  Thanks!
+
+-=- Brett
+-- 
+Brett Watson, Database/System Administrator
+Kansas Supreme Court - Topeka, KS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"
+1,2,"From: kolodzie@uni-duesseldorf.de (Stefan Kolodzie)
+Subject: WINWORD and QUATTRO-PRO-Problems on a notebook
+Organization: Psychologisches Institut I, Heinrich-Heine-Universitaet Duesseldorf
+Lines: 19
+NNTP-Posting-Host: 134.99.100.6
+
+Hello,
+
+I have a 386sx25 notebook with windows 3.1 running fine. WINWORD 2.0 and 
+QUATTRO-PRO for windows also work fine when no virtual memory is used. 
+Switching on the virtual memory option these programs (probably others too) 
+don't work, the system crashes. The same programs work well with arbitrary 
+virtual memory on two other desktop PC's. What am I doing wrong?
+
+If you can help, please mail to me directly, if possible.
+
+Thank you very much in advance.
+
+Stefan
+
+/---------------------------------------------------------------------------\
+| Stefan K. Kolodzie                              Heinrich-Heine-University |
+| Institute for General Psychology                     Duesseldorf, Germany |
+|                  e-mail: kolodzie@ze8.rz.uni-duesseldorf.de               |
+\---------------------------------------------------------------------------/
+"
+1,2,"From: Christian.Robert@etudiants.unine.ch
+Subject: DIAMOND 24-WINDOWS 3.1 CONFLICT
+Organization: University of Neuchatel, Switzerland
+Lines: 10
+
+HELLO,
+I HAVE SOME PROBLEMS WITH MY DIAMOND STEALTH LOCAL BUS GRAPHIC CARD.
+WHEN I TRY TO START WINDOWS MY SYSTEM STOP AND DISPLAY:
+""NO FREE FILES HANDLES,CANNOT LOAD COMMAND,SYSTEM HALTED""
+IT'S PERHAPS A BIOS SETUP PROBLEM BUT I'M NOT USED TO MY AMI-BIOS SETUP
+IF SOMEBODY CAN EXPLAIN ME;HOW TO SETUP SHADOW VIDEO ROM, OTHERS 
+SHADOW ROM ,AND ALSO HOW TO CONFIG THE TWO ""ADVENCED ... SETUP""
+FOR A BEST UTILISATION OF MY GRAPHIC CARD.
+THANKS FOR ANY ANSWER.
+CH.ROBERT
+"
+0,2,"From: tom@inferno.UUCP (Tom Sherwin)
+Subject: Re: XV under MS-DOS ?!?
+Organization: Periphonics Corporation
+Lines: 30
+NNTP-Posting-Host: ablaze
+
+|> Hi ... Recently I found XV for MS-DOS in a subdirectory of GNU-CC (GNUISH). I 
+|> use frequently XV on a Sun Spark Station 1 and I never had problems, but when I
+|> start it on my computer with -h option, it display the help menu and when I
+|> start it with a GIF-File my Hard disk turns 2 or 3 seconds and the prompt come
+|> back.
+|> 
+|> My computer is a little 386/25 with copro, 4 Mega rams, Tseng 4000 (1M) running
+|> MS-DOS 5.0 with HIMEM.SYS and no EMM386.SYS. I had the GO32.EXE too... but no
+|> driver who run with it.
+|> 
+|> Do somenone know the solution to run XV ??? any help would be apprecied..
+|> 		
+
+You probably need an X server running on top of MS DOS.  I use Desqview/X
+but any MS-DOS X server should do.
+
+-- 
+
+       XX           X  Technical documentation is writing 90% of the words
+        XX         X  for 10% of the features that only 1% of the customers
+         XX       X  actually use.
+          XX     X  -------------------------------------------------------
+  A PC to  XX   X  I don't have opinions, I have factual interpretations...
+ the power  XX X                                 -Me
+    of      X XX  ---------------------------------------------------------
+           X   XX  ...uunet!rutgers!mcdhup!inferno!tom can be found at
+          X     XX               Periphonics Corporation
+         X       XX  4000 Veterans Memorial Highway  Bohemia, NY 11716
+        X         XX  ----------------------------------------------------
+       X           XX  They pay me to write, not express their opinions...
+"
+0,2,"From: wbdst+@pitt.edu (William B Dwinnell)
+Subject: Diamond Stelth 24- any good?
+Organization: University of Pittsburgh
+Lines: 4
+
+
+I am in the market for a 24-bit graphics card for a PC (ISA bus), and
+was wondering if anyone had any comments (good? bad? otherwise?) regarding
+the Diamond Stealth 24?  
+"
+0,2,"From: kohut1@urz.unibas.ch
+Subject: Help ! Miro Crystal or ATI GUP ?
+Organization: University of Basel, Switzerland
+Lines: 21
+
+
+
+I'm planning to buy a new VLB/EISA system with a good graphic performance.
+So far I looked at the ATI GUP VLB as my favorite graphics-card. But 
+recently I heard something about a new card from  Miro. It was the Miro
+Crystal 24s with 3 MB and True Color support up to 1024x768. It costs just a
+little more than the ATI. So, can't decide which one matches better my needs.
+Any technical references and performance comparisons (especially from the
+Miro card) would be greatly appreciated.
+
+-Peter-
+
+E-Mail : kohut1@urz.unibas.ch
+
+                     ******************************
+                    **** Universitas Basiliensis *****
+                    ****      Switzerland        *****
+                     ********************************
+
+
+
+"

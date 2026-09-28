@@ -11,6 +11,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, f1_score
 from sklearn.base import clone
+from sklearn.neural_network import MLPClassifier
 
 RANDOM_STATE = 42
 
@@ -82,6 +83,12 @@ models = {
     "Linear SVM": SVC(
         kernel='linear',
         C=1.0,
+        random_state=RANDOM_STATE
+    ),
+
+        "MLP": MLPClassifier(
+        hidden_layer_sizes=(100,),
+        max_iter=300,
         random_state=RANDOM_STATE
     )
 }

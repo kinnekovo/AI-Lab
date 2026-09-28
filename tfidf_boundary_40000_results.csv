@@ -1,0 +1,2 @@
+max_features,ngram_range,actual_features,train_accuracy,train_macro_f1,val_accuracy,val_macro_f1,n_iter,feature_time,train_time,reference_20000_val_accuracy,reference_20000_val_macro_f1,accuracy_change_vs_20000,macro_f1_change_vs_20000
+40000,"(1, 1)",40000,1.0,1.0,0.9355495251017639,0.9359199963915625,169,1.1498477458953857,1144.0979187488556,0.933514,0.934024,0.0020355251017639686,0.001895996391562571

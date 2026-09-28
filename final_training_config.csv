@@ -1,0 +1,2 @@
+random_state,tfidf_max_features,tfidf_ngram_range,model,hidden_layer_sizes,activation,alpha,max_iter,actual_n_iter,train_samples,test_samples,feature_count,feature_time,train_time,predict_time
+42,20000,"(1, 1)",MLPClassifier,"(100,)",relu,0.001,300,150,7368,2457,20000,3.000673294067383,602.8314428329468,0.04504561424255371
