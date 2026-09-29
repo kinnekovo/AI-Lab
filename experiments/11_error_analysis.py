@@ -46,10 +46,7 @@ def load_data():
     return X_train, y_train, X_test_unlabeled
 
 
-# ============================================================
 # 1. 加载数据
-# ============================================================
-
 X_train, y_train, X_test_unlabeled = load_data()
 
 print("--- 数据加载成功 ---")
@@ -59,10 +56,7 @@ print(f"无标签测试集样本数量: {len(X_test_unlabeled)}")
 print("-" * 50)
 
 
-# ============================================================
 # 2. 与前面实验保持完全一致的数据划分
-# ============================================================
-
 X_train_split, X_val, y_train_split, y_val = train_test_split(
     X_train,
     y_train,
@@ -77,10 +71,7 @@ print(f"验证集样本数量: {len(X_val)}")
 print("-" * 50)
 
 
-# ============================================================
 # 3. 最终选定的 TF-IDF 配置
-# ============================================================
-
 vectorizer = TfidfVectorizer(
     max_features=20000,
     ngram_range=(1, 1)
@@ -99,10 +90,7 @@ print(f"特征提取时间: {feature_time:.2f} 秒")
 print("-" * 50)
 
 
-# ============================================================
 # 4. 最终选定的 MLP 配置
-# ============================================================
-
 model = MLPClassifier(
     hidden_layer_sizes=(100,),
     activation="relu",
@@ -126,10 +114,7 @@ print(f"训练完成，耗时: {train_time:.2f} 秒")
 print(f"实际迭代次数: {model.n_iter_}")
 
 
-# ============================================================
 # 5. 验证集总体表现
-# ============================================================
-
 y_val_pred = model.predict(X_val_tfidf)
 
 val_accuracy = accuracy_score(
@@ -150,10 +135,7 @@ print(f"Validation Macro-F1 : {val_macro_f1:.4f}")
 print("=" * 50)
 
 
-# ============================================================
 # 6. Per-class classification report
-# ============================================================
-
 report_dict = classification_report(
     y_val,
     y_val_pred,
@@ -173,10 +155,7 @@ print("\n--- Per-class Classification Report ---")
 print(report_df.to_string())
 
 
-# ============================================================
 # 7. Confusion Matrix
-# ============================================================
-
 labels = sorted(set(y_val))
 
 cm = confusion_matrix(
@@ -199,10 +178,7 @@ print("\n--- Confusion Matrix ---")
 print(cm_df.to_string())
 
 
-# ============================================================
 # 8. 保存 Confusion Matrix 图
-# ============================================================
-
 plt.figure(figsize=(8, 7))
 plt.imshow(cm)
 plt.title("Confusion Matrix - Final MLP")
@@ -231,10 +207,7 @@ plt.close()
 print("\nfinal_confusion_matrix.png 已保存！")
 
 
-# ============================================================
 # 9. 找出最常见的混淆类别对
-# ============================================================
-
 confusion_pairs = []
 
 for i, true_label in enumerate(labels):
@@ -272,10 +245,7 @@ print(
 )
 
 
-# ============================================================
 # 10. 导出典型误分类样本
-# ============================================================
-
 error_records = []
 
 for text, true_label, pred_label in zip(
@@ -310,10 +280,7 @@ print(
 )
 
 
-# ============================================================
-# 11. 为每个主要混淆类别对导出少量样本
-# ============================================================
-
+# 11. 为每个主要混淆类别对导出少量样
 top_pairs = confusion_pairs_df.head(5)
 
 example_records = []
