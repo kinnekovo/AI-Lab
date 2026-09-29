@@ -1,37 +1,37 @@
-# Experiment 1 - Text Classification
+# 实验一：文本分类
 
-## 1. Task
+## 1. 实验任务
 
-10-class news text classification using TF-IDF and classical ML / MLP models.
+使用 TF-IDF 特征与传统机器学习模型 / MLP，对新闻文本进行 10 分类。
 
-## 2. Dataset
+## 2. 数据集
 
-- 7,368 labeled training samples
-- 2,457 unlabeled test samples
-- Stratified 8:2 validation split: 5,894 training samples and 1,474 validation samples
-- `random_state=42`
+- 有标签训练样本：7,368 条
+- 无标签测试样本：2,457 条
+- 验证集划分：分层 8:2 划分，训练子集 5,894 条、验证集 1,474 条
+- 随机种子：`random_state=42`
 
-## 3. Project Structure
+## 3. 项目结构
 
-- `data/`: immutable labeled training data and unlabeled test data.
-- `experiments/`: numbered, independently executable experiment scripts.
-- `results/`: CSV records from tuning and comparison experiments; error-analysis CSV files are under `results/error_analysis/`.
-- `outputs/`: final submission artifacts, including predictions, final configuration, and the confusion-matrix figure.
-- `docs/`: experiment notes and report materials.
-- `final_train_predict.py`: trains the validated final MLP on all labeled data and creates submission predictions.
+- `data/`：原始有标签训练集与无标签测试集。
+- `experiments/`：按实验顺序编号、可独立运行的实验脚本。
+- `results/`：调参和模型比较的 CSV 结果；错误分析 CSV 位于 `results/error_analysis/`。
+- `outputs/`：最终提交产物，包括预测结果、最终训练配置和混淆矩阵图片。
+- `docs/`：调参记录和实验报告等文档。
+- `final_train_predict.py`：使用全部有标签数据训练已验证的最终 MLP，并生成测试集预测结果。
 
-## 4. Experimental Pipeline
+## 4. 实验流程
 
-Baseline → model tuning → TF-IDF optimization → final fair comparison → error analysis → full-data final training.
+Baseline → 模型调参 → TF-IDF 优化 → 最终公平比较 → 错误分析 → 全量数据最终训练。
 
-## 5. Final Configuration
+## 5. 最终配置
 
-TF-IDF:
+TF-IDF：
 
 - `max_features=20000`
 - `ngram_range=(1, 1)`
 
-MLP:
+MLP：
 
 - `hidden_layer_sizes=(100,)`
 - `activation='relu'`
@@ -39,24 +39,24 @@ MLP:
 - `max_iter=300`
 - `random_state=42`
 
-Validation results:
+验证集结果：
 
 - Accuracy = 0.9335
 - Macro-F1 = 0.9340
 
-## 6. Run Final Prediction
+## 6. 生成最终预测
 
-From the project root:
+在项目根目录执行：
 
 ```bash
 python final_train_predict.py
 ```
 
-The script writes `outputs/predictions.csv` and `outputs/final_training_config.csv`.
+脚本会生成 `outputs/predictions.csv` 和 `outputs/final_training_config.csv`。
 
-## 7. Reproduce Individual Experiments
+## 7. 复现实验
 
-From the project root:
+在项目根目录执行，例如：
 
 ```bash
 python experiments/01_baseline.py
@@ -64,11 +64,11 @@ python experiments/09_final_comparison.py
 python experiments/11_error_analysis.py
 ```
 
-Some MLP experiments take a comparatively long time to run. Each experiment resolves paths from its own file location, so it does not depend on the terminal's current working directory.
+部分 MLP 实验运行时间较长。所有脚本均基于自身文件位置解析路径，不依赖终端启动时的当前工作目录。
 
-## 8. Main Results
+## 8. 主要结果
 
-| Model | Macro-F1 |
+| 模型 | Macro-F1 |
 | --- | ---: |
 | MLP | 0.9340 |
 | Logistic Regression | 0.9311 |
