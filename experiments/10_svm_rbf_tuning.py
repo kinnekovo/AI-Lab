@@ -8,6 +8,7 @@
 #   相同 train/validation split
 
 import time
+from pathlib import Path
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
@@ -16,12 +17,18 @@ from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, f1_score
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = PROJECT_ROOT / "data"
+RESULTS_DIR = PROJECT_ROOT / "results"
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+RESULTS_DIR.mkdir(exist_ok=True)
+OUTPUTS_DIR.mkdir(exist_ok=True)
 RANDOM_STATE = 42
 
 
 def load_data():
-    train_df = pd.read_csv("train_data.csv")
-    test_df = pd.read_csv("test_data_unlabeled.csv")
+    train_df = pd.read_csv(DATA_DIR / "train_data.csv")
+    test_df = pd.read_csv(DATA_DIR / "test_data_unlabeled.csv")
 
     X_train = train_df["text"].astype(str).tolist()
     y_train = train_df["target"].values
@@ -210,7 +217,7 @@ print(
 print("=" * 50)
 
 phase_a_df.to_csv(
-    "svm_rbf_c_results.csv",
+    RESULTS_DIR / "svm_rbf_c_results.csv",
     index=False
 )
 
@@ -308,7 +315,7 @@ print(
 print("=" * 50)
 
 phase_b_df.to_csv(
-    "svm_rbf_gamma_results.csv",
+    RESULTS_DIR / "svm_rbf_gamma_results.csv",
     index=False
 )
 

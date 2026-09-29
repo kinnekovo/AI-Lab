@@ -1,22 +1,34 @@
-# experiment6_lr_tuning.py
-# Experiment 6: Logistic Regression 的 C 参数调优
-# 固定数据划分与 TF-IDF 设置，只改变 C。
+# experiment9_final_comparison.py
+# Experiment 9: 最终公平横向比较（更新版）
+# 统一使用选定的 TF-IDF 配置：
+#   max_features=20000
+#   ngram_range=(1, 1)
+# 比较 tuned MLP / Logistic Regression / Linear SVM / RBF SVM。
 
 import time
+from pathlib import Path
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.neural_network import MLPClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, f1_score
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = PROJECT_ROOT / "data"
+RESULTS_DIR = PROJECT_ROOT / "results"
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+RESULTS_DIR.mkdir(exist_ok=True)
+OUTPUTS_DIR.mkdir(exist_ok=True)
 RANDOM_STATE = 42
 
 
 def load_data():
-    train_df = pd.read_csv("train_data.csv")
-    test_df = pd.read_csv("test_data_unlabeled.csv")
+    train_df = pd.read_csv(DATA_DIR / "train_data.csv")
+    test_df = pd.read_csv(DATA_DIR / "test_data_unlabeled.csv")
 
     X_train = train_df["text"].astype(str).tolist()
     y_train = train_df["target"].values
@@ -39,7 +51,7 @@ print("-" * 50)
 
 
 # ============================================================
-# 2. 与 baseline 保持完全一致的数据划分
+# 2. 与前面实验保持完全一致的数据划分
 # ============================================================
 
 X_train_split, X_val, y_train_split, y_val = train_test_split(
@@ -57,43 +69,70 @@ print("-" * 50)
 
 
 # ============================================================
-# 3. 与 baseline 保持一致的 TF-IDF
+# 3. 最终统一 TF-IDF 配置
 # ============================================================
 
 vectorizer = TfidfVectorizer(
-    max_features=5000
+    max_features=20000,
+    ngram_range=(1, 1)
 )
+
+feature_start = time.time()
 
 X_train_tfidf = vectorizer.fit_transform(X_train_split)
 X_val_tfidf = vectorizer.transform(X_val)
 
-print(f"TF-IDF 特征数量: {X_train_tfidf.shape[1]}")
+feature_time = time.time() - feature_start
+
+print("--- TF-IDF 特征提取完成 ---")
+print(f"实际特征数量: {X_train_tfidf.shape[1]}")
+print(f"特征提取时间: {feature_time:.2f} 秒")
 print("=" * 50)
 
 
 # ============================================================
-# 4. Experiment 6：Logistic Regression 的 C 参数调优
-#    只改变 C
+# 4. 定义调参后的四个最终候选模型
 # ============================================================
 
-C_values = [
-    0.1,
-    1,
-    10,
-    100
-]
+models = {
+    "MLP": MLPClassifier(
+        hidden_layer_sizes=(100,),
+        activation="relu",
+        alpha=0.001,
+        max_iter=300,
+        random_state=RANDOM_STATE
+    ),
+
+    "Logistic Regression": LogisticRegression(
+        C=300,
+        max_iter=2000,
+        random_state=RANDOM_STATE
+    ),
+
+    "Linear SVM": SVC(
+        kernel="linear",
+        C=300,
+        random_state=RANDOM_STATE
+    ),
+
+    "RBF SVM": SVC(
+        kernel="rbf",
+        C=100,
+        gamma="scale",
+        random_state=RANDOM_STATE
+    )
+}
+
+
+# ============================================================
+# 5. 公平比较
+# ============================================================
 
 results = []
 
-for C in C_values:
+for model_name, model in models.items():
 
-    print(f"\n--- Logistic Regression: C={C} ---")
-
-    model = LogisticRegression(
-        C=C,
-        max_iter=2000,
-        random_state=RANDOM_STATE
-    )
+    print(f"\n--- 开始训练 {model_name} ---")
 
     start_time = time.time()
 
@@ -136,29 +175,41 @@ for C in C_values:
         average="macro"
     )
 
-    # 多分类下 n_iter_ 是数组，取最大迭代次数便于展示
-    actual_n_iter = int(model.n_iter_.max())
-
     print(f"Train Accuracy : {train_accuracy:.4f}")
     print(f"Train Macro-F1 : {train_macro_f1:.4f}")
     print(f"Val Accuracy   : {val_accuracy:.4f}")
     print(f"Val Macro-F1   : {val_macro_f1:.4f}")
-    print(f"实际迭代次数   : {actual_n_iter}")
     print(f"训练时间       : {train_time:.2f} 秒")
 
+    extra_info = ""
+
+    if model_name == "MLP":
+        extra_info = f"n_iter={model.n_iter_}"
+        print(f"实际迭代次数   : {model.n_iter_}")
+
+    elif model_name == "Logistic Regression":
+        actual_n_iter = int(model.n_iter_.max())
+        extra_info = f"n_iter={actual_n_iter}"
+        print(f"实际迭代次数   : {actual_n_iter}")
+
+    elif model_name in ["Linear SVM", "RBF SVM"]:
+        support_vector_count = len(model.support_)
+        extra_info = f"support_vectors={support_vector_count}"
+        print(f"支持向量数量   : {support_vector_count}")
+
     results.append({
-        "C": C,
+        "model": model_name,
         "train_accuracy": train_accuracy,
         "train_macro_f1": train_macro_f1,
         "val_accuracy": val_accuracy,
         "val_macro_f1": val_macro_f1,
-        "n_iter": actual_n_iter,
-        "train_time": train_time
+        "train_time": train_time,
+        "extra_info": extra_info
     })
 
 
 # ============================================================
-# 5. 汇总并保存结果
+# 6. 汇总并保存最终比较结果
 # ============================================================
 
 results_df = pd.DataFrame(
@@ -169,21 +220,21 @@ results_df = pd.DataFrame(
 )
 
 print("\n" + "=" * 50)
-print("--- Logistic Regression C 参数调优结果 ---")
+print("--- 最终公平比较结果（含 RBF SVM） ---")
 print(results_df.to_string(index=False))
 print("=" * 50)
 
 results_df.to_csv(
-    "lr_tuning_results.csv",
+    RESULTS_DIR / "final_model_comparison_results.csv",
     index=False
 )
 
 best_result = results_df.iloc[0]
 
-print(f"\n当前最佳 C: {best_result['C']}")
+print(f"\n当前最佳模型: {best_result['model']}")
 print(f"最佳验证集 Accuracy: {best_result['val_accuracy']:.4f}")
 print(f"最佳验证集 Macro-F1: {best_result['val_macro_f1']:.4f}")
 print(f"对应训练集 Macro-F1: {best_result['train_macro_f1']:.4f}")
-print(f"实际迭代次数: {int(best_result['n_iter'])}")
 print(f"训练时间: {best_result['train_time']:.2f} 秒")
-print("\nlr_tuning_results.csv 已保存！")
+
+print("\nfinal_model_comparison_results.csv 已保存！")

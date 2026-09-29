@@ -4,6 +4,7 @@
 # 仅改变 hidden_layer_sizes，保证实验可比较。
 
 import time
+from pathlib import Path
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
@@ -11,12 +12,18 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score, f1_score
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = PROJECT_ROOT / "data"
+RESULTS_DIR = PROJECT_ROOT / "results"
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+RESULTS_DIR.mkdir(exist_ok=True)
+OUTPUTS_DIR.mkdir(exist_ok=True)
 RANDOM_STATE = 42
 
 
 def load_data():
-    train_df = pd.read_csv('train_data.csv')
-    test_df = pd.read_csv('test_data_unlabeled.csv')
+    train_df = pd.read_csv(DATA_DIR / "train_data.csv")
+    test_df = pd.read_csv(DATA_DIR / "test_data_unlabeled.csv")
     X_train = train_df['text'].astype(str).tolist()
     y_train = train_df['target'].values
     X_test_unlabeled = test_df['text'].astype(str).tolist()
@@ -124,7 +131,7 @@ print("--- MLP 网络结构调参结果 ---")
 print(results_df.to_string(index=False))
 print("=" * 50)
 
-results_df.to_csv('mlp_structure_results.csv', index=False)
+results_df.to_csv(RESULTS_DIR / "mlp_structure_results.csv", index=False)
 
 best_result = results_df.iloc[0]
 

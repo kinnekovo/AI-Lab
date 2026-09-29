@@ -9,8 +9,8 @@
 #
 # 注意：本文件只用于验证集分析，不生成最终 test 预测。
 
-import os
 import time
+from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -24,12 +24,20 @@ from sklearn.metrics import (
     confusion_matrix
 )
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = PROJECT_ROOT / "data"
+RESULTS_DIR = PROJECT_ROOT / "results"
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+ERROR_RESULTS_DIR = RESULTS_DIR / "error_analysis"
+RESULTS_DIR.mkdir(exist_ok=True)
+OUTPUTS_DIR.mkdir(exist_ok=True)
+ERROR_RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 RANDOM_STATE = 42
 
 
 def load_data():
-    train_df = pd.read_csv("train_data.csv")
-    test_df = pd.read_csv("test_data_unlabeled.csv")
+    train_df = pd.read_csv(DATA_DIR / "train_data.csv")
+    test_df = pd.read_csv(DATA_DIR / "test_data_unlabeled.csv")
 
     X_train = train_df["text"].astype(str).tolist()
     y_train = train_df["target"].values
@@ -158,7 +166,7 @@ report_df = pd.DataFrame(
 ).transpose()
 
 report_df.to_csv(
-    "final_classification_report.csv"
+    ERROR_RESULTS_DIR / "final_classification_report.csv"
 )
 
 print("\n--- Per-class Classification Report ---")
@@ -184,7 +192,7 @@ cm_df = pd.DataFrame(
 )
 
 cm_df.to_csv(
-    "final_confusion_matrix.csv"
+    ERROR_RESULTS_DIR / "final_confusion_matrix.csv"
 )
 
 print("\n--- Confusion Matrix ---")
@@ -215,7 +223,7 @@ for i in range(len(labels)):
 
 plt.tight_layout()
 plt.savefig(
-    "final_confusion_matrix.png",
+    OUTPUTS_DIR / "final_confusion_matrix.png",
     dpi=200
 )
 plt.close()
@@ -252,7 +260,7 @@ confusion_pairs_df = pd.DataFrame(
 )
 
 confusion_pairs_df.to_csv(
-    "top_confusion_pairs.csv",
+    ERROR_RESULTS_DIR / "top_confusion_pairs.csv",
     index=False
 )
 
@@ -288,7 +296,7 @@ errors_df = pd.DataFrame(
 )
 
 errors_df.to_csv(
-    "misclassified_samples.csv",
+    ERROR_RESULTS_DIR / "misclassified_samples.csv",
     index=False
 )
 
@@ -332,7 +340,7 @@ examples_df = pd.DataFrame(
 )
 
 examples_df.to_csv(
-    "top_confusion_examples.csv",
+    ERROR_RESULTS_DIR / "top_confusion_examples.csv",
     index=False
 )
 

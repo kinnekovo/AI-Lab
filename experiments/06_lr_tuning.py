@@ -1,22 +1,29 @@
-# experiment5_svm_tuning.py
-# Experiment 5: Linear SVM 的 C 参数调优
+# experiment6_lr_tuning.py
+# Experiment 6: Logistic Regression 的 C 参数调优
 # 固定数据划分与 TF-IDF 设置，只改变 C。
 
 import time
+from pathlib import Path
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = PROJECT_ROOT / "data"
+RESULTS_DIR = PROJECT_ROOT / "results"
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+RESULTS_DIR.mkdir(exist_ok=True)
+OUTPUTS_DIR.mkdir(exist_ok=True)
 RANDOM_STATE = 42
 
 
 def load_data():
-    train_df = pd.read_csv("train_data.csv")
-    test_df = pd.read_csv("test_data_unlabeled.csv")
+    train_df = pd.read_csv(DATA_DIR / "train_data.csv")
+    test_df = pd.read_csv(DATA_DIR / "test_data_unlabeled.csv")
 
     X_train = train_df["text"].astype(str).tolist()
     y_train = train_df["target"].values
@@ -72,8 +79,8 @@ print("=" * 50)
 
 
 # ============================================================
-# 4. Experiment 5：Linear SVM 的 C 参数调优
-#    固定 kernel='linear'，只改变 C
+# 4. Experiment 6：Logistic Regression 的 C 参数调优
+#    只改变 C
 # ============================================================
 
 C_values = [
@@ -87,11 +94,11 @@ results = []
 
 for C in C_values:
 
-    print(f"\n--- Linear SVM: C={C} ---")
+    print(f"\n--- Logistic Regression: C={C} ---")
 
-    model = SVC(
-        kernel="linear",
+    model = LogisticRegression(
         C=C,
+        max_iter=2000,
         random_state=RANDOM_STATE
     )
 
@@ -136,14 +143,14 @@ for C in C_values:
         average="macro"
     )
 
-    # 支持向量数量
-    support_vector_count = len(model.support_)
+    # 多分类下 n_iter_ 是数组，取最大迭代次数便于展示
+    actual_n_iter = int(model.n_iter_.max())
 
     print(f"Train Accuracy : {train_accuracy:.4f}")
     print(f"Train Macro-F1 : {train_macro_f1:.4f}")
     print(f"Val Accuracy   : {val_accuracy:.4f}")
     print(f"Val Macro-F1   : {val_macro_f1:.4f}")
-    print(f"支持向量数量   : {support_vector_count}")
+    print(f"实际迭代次数   : {actual_n_iter}")
     print(f"训练时间       : {train_time:.2f} 秒")
 
     results.append({
@@ -152,7 +159,7 @@ for C in C_values:
         "train_macro_f1": train_macro_f1,
         "val_accuracy": val_accuracy,
         "val_macro_f1": val_macro_f1,
-        "support_vector_count": support_vector_count,
+        "n_iter": actual_n_iter,
         "train_time": train_time
     })
 
@@ -169,12 +176,12 @@ results_df = pd.DataFrame(
 )
 
 print("\n" + "=" * 50)
-print("--- Linear SVM C 参数调优结果 ---")
+print("--- Logistic Regression C 参数调优结果 ---")
 print(results_df.to_string(index=False))
 print("=" * 50)
 
 results_df.to_csv(
-    "svm_tuning_results.csv",
+    RESULTS_DIR / "lr_tuning_results.csv",
     index=False
 )
 
@@ -184,6 +191,6 @@ print(f"\n当前最佳 C: {best_result['C']}")
 print(f"最佳验证集 Accuracy: {best_result['val_accuracy']:.4f}")
 print(f"最佳验证集 Macro-F1: {best_result['val_macro_f1']:.4f}")
 print(f"对应训练集 Macro-F1: {best_result['train_macro_f1']:.4f}")
-print(f"支持向量数量: {int(best_result['support_vector_count'])}")
+print(f"实际迭代次数: {int(best_result['n_iter'])}")
 print(f"训练时间: {best_result['train_time']:.2f} 秒")
-print("\nsvm_tuning_results.csv 已保存！")
+print("\nlr_tuning_results.csv 已保存！")

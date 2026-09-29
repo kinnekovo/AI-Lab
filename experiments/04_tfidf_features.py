@@ -3,6 +3,7 @@
 # 固定当前最佳 MLP 配置，只研究 TF-IDF 的 max_features 与 ngram_range。
 
 import time
+from pathlib import Path
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
@@ -10,6 +11,12 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score, f1_score
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = PROJECT_ROOT / "data"
+RESULTS_DIR = PROJECT_ROOT / "results"
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+RESULTS_DIR.mkdir(exist_ok=True)
+OUTPUTS_DIR.mkdir(exist_ok=True)
 RANDOM_STATE = 42
 
 MLP_CONFIG = {
@@ -22,8 +29,8 @@ MLP_CONFIG = {
 
 
 def load_data():
-    train_df = pd.read_csv("train_data.csv")
-    test_df = pd.read_csv("test_data_unlabeled.csv")
+    train_df = pd.read_csv(DATA_DIR / "train_data.csv")
+    test_df = pd.read_csv(DATA_DIR / "test_data_unlabeled.csv")
 
     X_train = train_df["text"].astype(str).tolist()
     y_train = train_df["target"].values
@@ -155,7 +162,7 @@ print(max_features_df.to_string(index=False))
 print("=" * 50)
 
 max_features_df.to_csv(
-    "tfidf_max_features_results.csv",
+    RESULTS_DIR / "tfidf_max_features_results.csv",
     index=False
 )
 
@@ -201,7 +208,7 @@ print(ngram_df.to_string(index=False))
 print("=" * 50)
 
 ngram_df.to_csv(
-    "tfidf_ngram_results.csv",
+    RESULTS_DIR / "tfidf_ngram_results.csv",
     index=False
 )
 

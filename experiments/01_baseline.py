@@ -1,7 +1,8 @@
-# my_experiment.py
+# Experiment 1: baseline comparison of NB, LR, Linear SVM, and MLP.
 
 # 1. 从我们提供的帮助脚本中导入加载函数
 import time
+from pathlib import Path
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
@@ -10,15 +11,20 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, f1_score
-from sklearn.base import clone
 from sklearn.neural_network import MLPClassifier
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = PROJECT_ROOT / "data"
+RESULTS_DIR = PROJECT_ROOT / "results"
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+RESULTS_DIR.mkdir(exist_ok=True)
+OUTPUTS_DIR.mkdir(exist_ok=True)
 RANDOM_STATE = 42
 
 
 def load_data():
-    train_df = pd.read_csv('train_data.csv')
-    test_df = pd.read_csv('test_data_unlabeled.csv')
+    train_df = pd.read_csv(DATA_DIR / "train_data.csv")
+    test_df = pd.read_csv(DATA_DIR / "test_data_unlabeled.csv")
     X_train = train_df['text'].astype(str).tolist()
     y_train = train_df['target'].values
     X_test_unlabeled = test_df['text'].astype(str).tolist()
@@ -155,7 +161,7 @@ print(results_df.to_string(index=False))
 print("=" * 50)
 
 results_df.to_csv(
-    'baseline_results.csv',
+    RESULTS_DIR / "baseline_results.csv",
     index=False
 )
 
@@ -163,45 +169,3 @@ print(f"\n当前最佳模型: {best_model_name}")
 print(f"最佳验证集 Macro-F1: {best_f1:.4f}")
 
 
-# 3. 使用最佳模型重新训练，并对测试集进行预测
-
-print(f"\n--- 使用完整训练集重新训练 {best_model_name} ---")
-
-# 重新创建 TF-IDF 向量化器
-final_vectorizer = TfidfVectorizer(
-    max_features=5000
-)
-
-# 在全部有标签训练数据上重新 fit
-X_train_full_tfidf = final_vectorizer.fit_transform(X_train)
-
-# 测试集只能 transform，不能 fit
-X_test_tfidf = final_vectorizer.transform(X_test_unlabeled)
-
-# 复制已经选择好的最佳模型及其参数
-final_model = clone(best_model)
-
-# 使用全部训练数据重新训练
-final_model.fit(
-    X_train_full_tfidf,
-    y_train
-)
-
-# 对测试集进行预测
-predictions = final_model.predict(
-    X_test_tfidf
-)
-
-print("测试集预测完成！")
-print(f"预测结果数量: {len(predictions)}")
-
-
-
-# 4. 保存预测结果
-pd.DataFrame(predictions).to_csv(
-    'predictions.csv',
-    index=False,
-    header=False
-)
-
-print("\npredictions.csv 已保存！")

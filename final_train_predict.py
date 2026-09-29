@@ -20,18 +20,23 @@
 # 4. 最终生成 predictions.csv。
 
 import time
+from pathlib import Path
 import pandas as pd
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neural_network import MLPClassifier
 
 
+PROJECT_ROOT = Path(__file__).resolve().parent
+DATA_DIR = PROJECT_ROOT / "data"
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+OUTPUTS_DIR.mkdir(exist_ok=True)
 RANDOM_STATE = 42
 
 
 def load_data():
-    train_df = pd.read_csv("train_data.csv")
-    test_df = pd.read_csv("test_data_unlabeled.csv")
+    train_df = pd.read_csv(DATA_DIR / "train_data.csv")
+    test_df = pd.read_csv(DATA_DIR / "test_data_unlabeled.csv")
 
     X_train = train_df["text"].astype(str).tolist()
     y_train = train_df["target"].values
@@ -139,7 +144,7 @@ print("-" * 50)
 pd.DataFrame(
     predictions
 ).to_csv(
-    "predictions.csv",
+    OUTPUTS_DIR / "predictions.csv",
     index=False,
     header=False
 )
@@ -170,7 +175,7 @@ config_df = pd.DataFrame([{
 }])
 
 config_df.to_csv(
-    "final_training_config.csv",
+    OUTPUTS_DIR / "final_training_config.csv",
     index=False
 )
 
