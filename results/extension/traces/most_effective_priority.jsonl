@@ -1,0 +1,95 @@
+{"event": "expand", "path": "", "depth": 0, "choices": "T3|T2|T4|T1", "player": "MAX", "alpha": -Infinity, "beta": Infinity}
+{"event": "expand", "path": "T3", "depth": 1, "choices": "T1|T4|T2", "player": "MIN", "alpha": -Infinity, "beta": Infinity}
+{"event": "expand", "path": "T3/T1", "depth": 2, "choices": "T2|T4", "player": "MAX", "alpha": -Infinity, "beta": Infinity}
+{"event": "expand", "path": "T3/T1/T2", "depth": 3, "choices": "T4", "player": "MIN", "alpha": -Infinity, "beta": Infinity}
+{"event": "leaf", "path": "T3/T1/T2/T4", "depth": 4, "value": -11, "alpha": -Infinity, "beta": Infinity}
+{"event": "child_result", "path": "T3/T1/T2/T4", "depth": 4, "score": -11, "best": -11, "alpha": -Infinity, "beta": Infinity}
+{"event": "child_result", "path": "T3/T1/T2", "depth": 3, "score": -11, "best": -11, "alpha": -Infinity, "beta": Infinity}
+{"event": "expand", "path": "T3/T1/T4", "depth": 3, "choices": "T2", "player": "MIN", "alpha": -11, "beta": Infinity}
+{"event": "leaf", "path": "T3/T1/T4/T2", "depth": 4, "value": -25, "alpha": -11, "beta": Infinity}
+{"event": "child_result", "path": "T3/T1/T4/T2", "depth": 4, "score": -25, "best": -25, "alpha": -11, "beta": Infinity}
+{"event": "child_result", "path": "T3/T1/T4", "depth": 3, "score": -25, "best": -11, "alpha": -11, "beta": Infinity}
+{"event": "child_result", "path": "T3/T1", "depth": 2, "score": -11, "best": -11, "alpha": -Infinity, "beta": Infinity}
+{"event": "expand", "path": "T3/T4", "depth": 2, "choices": "T1|T2", "player": "MAX", "alpha": -Infinity, "beta": -11}
+{"event": "expand", "path": "T3/T4/T1", "depth": 3, "choices": "T2", "player": "MIN", "alpha": -Infinity, "beta": -11}
+{"event": "leaf", "path": "T3/T4/T1/T2", "depth": 4, "value": 12, "alpha": -Infinity, "beta": -11}
+{"event": "child_result", "path": "T3/T4/T1/T2", "depth": 4, "score": 12, "best": 12, "alpha": -Infinity, "beta": -11}
+{"event": "child_result", "path": "T3/T4/T1", "depth": 3, "score": 12, "best": 12, "alpha": -Infinity, "beta": -11}
+{"event": "cutoff", "path": "T3/T4", "depth": 2, "alpha": 12, "beta": -11, "skipped": "T2", "best": 12}
+{"event": "child_result", "path": "T3/T4", "depth": 2, "score": 12, "best": -11, "alpha": -Infinity, "beta": -11}
+{"event": "expand", "path": "T3/T2", "depth": 2, "choices": "T1|T4", "player": "MAX", "alpha": -Infinity, "beta": -11}
+{"event": "expand", "path": "T3/T2/T1", "depth": 3, "choices": "T4", "player": "MIN", "alpha": -Infinity, "beta": -11}
+{"event": "leaf", "path": "T3/T2/T1/T4", "depth": 4, "value": 17, "alpha": -Infinity, "beta": -11}
+{"event": "child_result", "path": "T3/T2/T1/T4", "depth": 4, "score": 17, "best": 17, "alpha": -Infinity, "beta": -11}
+{"event": "child_result", "path": "T3/T2/T1", "depth": 3, "score": 17, "best": 17, "alpha": -Infinity, "beta": -11}
+{"event": "cutoff", "path": "T3/T2", "depth": 2, "alpha": 17, "beta": -11, "skipped": "T4", "best": 17}
+{"event": "child_result", "path": "T3/T2", "depth": 2, "score": 17, "best": -11, "alpha": -Infinity, "beta": -11}
+{"event": "child_result", "path": "T3", "depth": 1, "score": -11, "best": -11, "alpha": -Infinity, "beta": Infinity}
+{"event": "expand", "path": "T2", "depth": 1, "choices": "T1|T4|T3", "player": "MIN", "alpha": -11, "beta": Infinity}
+{"event": "expand", "path": "T2/T1", "depth": 2, "choices": "T3|T4", "player": "MAX", "alpha": -11, "beta": Infinity}
+{"event": "expand", "path": "T2/T1/T3", "depth": 3, "choices": "T4", "player": "MIN", "alpha": -11, "beta": Infinity}
+{"event": "leaf", "path": "T2/T1/T3/T4", "depth": 4, "value": -8, "alpha": -11, "beta": Infinity}
+{"event": "child_result", "path": "T2/T1/T3/T4", "depth": 4, "score": -8, "best": -8, "alpha": -11, "beta": Infinity}
+{"event": "child_result", "path": "T2/T1/T3", "depth": 3, "score": -8, "best": -8, "alpha": -11, "beta": Infinity}
+{"event": "expand", "path": "T2/T1/T4", "depth": 3, "choices": "T3", "player": "MIN", "alpha": -8, "beta": Infinity}
+{"event": "leaf", "path": "T2/T1/T4/T3", "depth": 4, "value": -29, "alpha": -8, "beta": Infinity}
+{"event": "child_result", "path": "T2/T1/T4/T3", "depth": 4, "score": -29, "best": -29, "alpha": -8, "beta": Infinity}
+{"event": "child_result", "path": "T2/T1/T4", "depth": 3, "score": -29, "best": -8, "alpha": -8, "beta": Infinity}
+{"event": "child_result", "path": "T2/T1", "depth": 2, "score": -8, "best": -8, "alpha": -11, "beta": Infinity}
+{"event": "expand", "path": "T2/T4", "depth": 2, "choices": "T3|T1", "player": "MAX", "alpha": -11, "beta": -8}
+{"event": "expand", "path": "T2/T4/T3", "depth": 3, "choices": "T1", "player": "MIN", "alpha": -11, "beta": -8}
+{"event": "leaf", "path": "T2/T4/T3/T1", "depth": 4, "value": -2, "alpha": -11, "beta": -8}
+{"event": "child_result", "path": "T2/T4/T3/T1", "depth": 4, "score": -2, "best": -2, "alpha": -11, "beta": -8}
+{"event": "child_result", "path": "T2/T4/T3", "depth": 3, "score": -2, "best": -2, "alpha": -11, "beta": -8}
+{"event": "cutoff", "path": "T2/T4", "depth": 2, "alpha": -2, "beta": -8, "skipped": "T1", "best": -2}
+{"event": "child_result", "path": "T2/T4", "depth": 2, "score": -2, "best": -8, "alpha": -11, "beta": -8}
+{"event": "expand", "path": "T2/T3", "depth": 2, "choices": "T1|T4", "player": "MAX", "alpha": -11, "beta": -8}
+{"event": "expand", "path": "T2/T3/T1", "depth": 3, "choices": "T4", "player": "MIN", "alpha": -11, "beta": -8}
+{"event": "leaf", "path": "T2/T3/T1/T4", "depth": 4, "value": 15, "alpha": -11, "beta": -8}
+{"event": "child_result", "path": "T2/T3/T1/T4", "depth": 4, "score": 15, "best": 15, "alpha": -11, "beta": -8}
+{"event": "child_result", "path": "T2/T3/T1", "depth": 3, "score": 15, "best": 15, "alpha": -11, "beta": -8}
+{"event": "cutoff", "path": "T2/T3", "depth": 2, "alpha": 15, "beta": -8, "skipped": "T4", "best": 15}
+{"event": "child_result", "path": "T2/T3", "depth": 2, "score": 15, "best": -8, "alpha": -11, "beta": -8}
+{"event": "child_result", "path": "T2", "depth": 1, "score": -8, "best": -8, "alpha": -11, "beta": Infinity}
+{"event": "expand", "path": "T4", "depth": 1, "choices": "T1|T3|T2", "player": "MIN", "alpha": -8, "beta": Infinity}
+{"event": "expand", "path": "T4/T1", "depth": 2, "choices": "T3|T2", "player": "MAX", "alpha": -8, "beta": Infinity}
+{"event": "expand", "path": "T4/T1/T3", "depth": 3, "choices": "T2", "player": "MIN", "alpha": -8, "beta": Infinity}
+{"event": "leaf", "path": "T4/T1/T3/T2", "depth": 4, "value": -24, "alpha": -8, "beta": Infinity}
+{"event": "child_result", "path": "T4/T1/T3/T2", "depth": 4, "score": -24, "best": -24, "alpha": -8, "beta": Infinity}
+{"event": "child_result", "path": "T4/T1/T3", "depth": 3, "score": -24, "best": -24, "alpha": -8, "beta": Infinity}
+{"event": "expand", "path": "T4/T1/T2", "depth": 3, "choices": "T3", "player": "MIN", "alpha": -8, "beta": Infinity}
+{"event": "leaf", "path": "T4/T1/T2/T3", "depth": 4, "value": -31, "alpha": -8, "beta": Infinity}
+{"event": "child_result", "path": "T4/T1/T2/T3", "depth": 4, "score": -31, "best": -31, "alpha": -8, "beta": Infinity}
+{"event": "child_result", "path": "T4/T1/T2", "depth": 3, "score": -31, "best": -24, "alpha": -8, "beta": Infinity}
+{"event": "child_result", "path": "T4/T1", "depth": 2, "score": -24, "best": -24, "alpha": -8, "beta": Infinity}
+{"event": "cutoff", "path": "T4", "depth": 1, "alpha": -8, "beta": -24, "skipped": "T3|T2", "best": -24}
+{"event": "child_result", "path": "T4", "depth": 1, "score": -24, "best": -8, "alpha": -8, "beta": Infinity}
+{"event": "expand", "path": "T1", "depth": 1, "choices": "T4|T3|T2", "player": "MIN", "alpha": -8, "beta": Infinity}
+{"event": "expand", "path": "T1/T4", "depth": 2, "choices": "T3|T2", "player": "MAX", "alpha": -8, "beta": Infinity}
+{"event": "expand", "path": "T1/T4/T3", "depth": 3, "choices": "T2", "player": "MIN", "alpha": -8, "beta": Infinity}
+{"event": "leaf", "path": "T1/T4/T3/T2", "depth": 4, "value": 4, "alpha": -8, "beta": Infinity}
+{"event": "child_result", "path": "T1/T4/T3/T2", "depth": 4, "score": 4, "best": 4, "alpha": -8, "beta": Infinity}
+{"event": "child_result", "path": "T1/T4/T3", "depth": 3, "score": 4, "best": 4, "alpha": -8, "beta": Infinity}
+{"event": "expand", "path": "T1/T4/T2", "depth": 3, "choices": "T3", "player": "MIN", "alpha": 4, "beta": Infinity}
+{"event": "leaf", "path": "T1/T4/T2/T3", "depth": 4, "value": -3, "alpha": 4, "beta": Infinity}
+{"event": "child_result", "path": "T1/T4/T2/T3", "depth": 4, "score": -3, "best": -3, "alpha": 4, "beta": Infinity}
+{"event": "child_result", "path": "T1/T4/T2", "depth": 3, "score": -3, "best": 4, "alpha": 4, "beta": Infinity}
+{"event": "child_result", "path": "T1/T4", "depth": 2, "score": 4, "best": 4, "alpha": -8, "beta": Infinity}
+{"event": "expand", "path": "T1/T3", "depth": 2, "choices": "T4|T2", "player": "MAX", "alpha": -8, "beta": 4}
+{"event": "expand", "path": "T1/T3/T4", "depth": 3, "choices": "T2", "player": "MIN", "alpha": -8, "beta": 4}
+{"event": "leaf", "path": "T1/T3/T4/T2", "depth": 4, "value": -10, "alpha": -8, "beta": 4}
+{"event": "child_result", "path": "T1/T3/T4/T2", "depth": 4, "score": -10, "best": -10, "alpha": -8, "beta": 4}
+{"event": "child_result", "path": "T1/T3/T4", "depth": 3, "score": -10, "best": -10, "alpha": -8, "beta": 4}
+{"event": "expand", "path": "T1/T3/T2", "depth": 3, "choices": "T4", "player": "MIN", "alpha": -8, "beta": 4}
+{"event": "leaf", "path": "T1/T3/T2/T4", "depth": 4, "value": 4, "alpha": -8, "beta": 4}
+{"event": "child_result", "path": "T1/T3/T2/T4", "depth": 4, "score": 4, "best": 4, "alpha": -8, "beta": 4}
+{"event": "child_result", "path": "T1/T3/T2", "depth": 3, "score": 4, "best": 4, "alpha": -8, "beta": 4}
+{"event": "child_result", "path": "T1/T3", "depth": 2, "score": 4, "best": 4, "alpha": -8, "beta": 4}
+{"event": "expand", "path": "T1/T2", "depth": 2, "choices": "T3|T4", "player": "MAX", "alpha": -8, "beta": 4}
+{"event": "expand", "path": "T1/T2/T3", "depth": 3, "choices": "T4", "player": "MIN", "alpha": -8, "beta": 4}
+{"event": "leaf", "path": "T1/T2/T3/T4", "depth": 4, "value": 9, "alpha": -8, "beta": 4}
+{"event": "child_result", "path": "T1/T2/T3/T4", "depth": 4, "score": 9, "best": 9, "alpha": -8, "beta": 4}
+{"event": "child_result", "path": "T1/T2/T3", "depth": 3, "score": 9, "best": 9, "alpha": -8, "beta": 4}
+{"event": "cutoff", "path": "T1/T2", "depth": 2, "alpha": 9, "beta": 4, "skipped": "T4", "best": 9}
+{"event": "child_result", "path": "T1/T2", "depth": 2, "score": 9, "best": 4, "alpha": -8, "beta": 4}
+{"event": "child_result", "path": "T1", "depth": 1, "score": 4, "best": 4, "alpha": -8, "beta": Infinity}

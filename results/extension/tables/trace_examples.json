@@ -1,0 +1,38 @@
+[
+  {
+    "role": "most_effective",
+    "case": "seed305_n4_h4",
+    "seed": 305,
+    "treasures": 4,
+    "depth": 4,
+    "relative_node_reduction": 0.311111,
+    "greedy_nodes": 45,
+    "opponent_nodes": 31,
+    "greedy_cutoffs": 6,
+    "opponent_cutoffs": 5,
+    "greedy_root_order": "T3|T2|T4|T1",
+    "opponent_root_order": "T1|T3|T2|T4",
+    "trace_events_captured": {
+      "priority": 95,
+      "opponent": 66
+    }
+  },
+  {
+    "role": "least_effective",
+    "case": "seed307_n6_h4",
+    "seed": 307,
+    "treasures": 6,
+    "depth": 4,
+    "relative_node_reduction": -0.22,
+    "greedy_nodes": 100,
+    "opponent_nodes": 122,
+    "greedy_cutoffs": 37,
+    "opponent_cutoffs": 39,
+    "greedy_root_order": "T3|T1|T6|T4|T2|T5",
+    "opponent_root_order": "T6|T3|T1|T4|T2|T5",
+    "trace_events_captured": {
+      "priority": 236,
+      "opponent": 282
+    }
+  }
+]

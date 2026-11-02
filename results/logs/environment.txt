@@ -1,0 +1,6 @@
+Performance runs in this package:
+Python: 3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]
+Platform: Linux-6.18.55-x86_64-with-glibc2.41
+Processor: not reported
+All elapsed times use perf_counter and are shown as medians of 30 repeats.
+Clock/time results vary across machines; deterministic node counts are the main comparison.

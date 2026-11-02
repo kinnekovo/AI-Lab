@@ -1,0 +1,34 @@
+test_alpha_beta_not_more_visits (test_adversarial.TestGameTrees.test_alpha_beta_not_more_visits) ... ok
+test_empty_leaf_is_invalid (test_adversarial.TestGameTrees.test_empty_leaf_is_invalid) ... ok
+test_official_tree (test_adversarial.TestGameTrees.test_official_tree) ... ok
+test_reverse_visitation_still_same_value (test_adversarial.TestGameTrees.test_reverse_visitation_still_same_value) ... ok
+test_single_leaf_and_negative (test_adversarial.TestGameTrees.test_single_leaf_and_negative) ... ok
+test_wide_tree_crosscheck (test_adversarial.TestGameTrees.test_wide_tree_crosscheck) ... ok
+test_goal_enter_cost_zero_and_no_overestimate (test_astar.TestAStar.test_goal_enter_cost_zero_and_no_overestimate) ... ok
+test_invalid_shape (test_astar.TestAStar.test_invalid_shape) ... ok
+test_mixed_numeric_and_string_cells (test_astar.TestAStar.test_mixed_numeric_and_string_cells) ... ok
+test_no_path_and_unreachable_weighted (test_astar.TestAStar.test_no_path_and_unreachable_weighted) ... ok
+test_official_maze (test_astar.TestAStar.test_official_maze) ... ok
+test_official_weighted (test_astar.TestAStar.test_official_weighted) ... ok
+test_random_weighted_against_independent_dijkstra (test_astar.TestAStar.test_random_weighted_against_independent_dijkstra) ... ok
+test_start_equals_goal (test_astar.TestAStar.test_start_equals_goal) ... ok
+test_treasure_cost_special_cells_equal_one (test_astar.TestAStar.test_treasure_cost_special_cells_equal_one) ... ok
+test_asymmetric_reverse_distances (test_extension.TestLandmark.test_asymmetric_reverse_distances) ... ok
+test_count_and_validity (test_extension.TestLandmark.test_count_and_validity) ... ok
+test_goal_cost_zero_and_direction (test_extension.TestLandmark.test_goal_cost_zero_and_direction) ... ok
+test_random_maps_oracle_and_consistency (test_extension.TestLandmark.test_random_maps_oracle_and_consistency) ... ok
+test_lambda_zero_is_greedy (test_extension.TestMoveOrdering.test_lambda_zero_is_greedy) ... ok
+test_negative_lambda (test_extension.TestMoveOrdering.test_negative_lambda) ... ok
+test_official_best_value_unchanged (test_extension.TestMoveOrdering.test_official_best_value_unchanged) ... ok
+test_scenarios_reproducible_and_correct (test_extension.TestMoveOrdering.test_scenarios_reproducible_and_correct) ... ok
+test_trace_does_not_change_counts (test_extension.TestMoveOrdering.test_trace_does_not_change_counts) ... ok
+test_all_orderings_utility_consistency (test_treasure.TestTreasure.test_all_orderings_utility_consistency) ... ok
+test_no_other_player_blocking_and_full_depth (test_treasure.TestTreasure.test_no_other_player_blocking_and_full_depth) ... ok
+test_official_h2_h4 (test_treasure.TestTreasure.test_official_h2_h4) ... ok
+test_pairwise_matrix (test_treasure.TestTreasure.test_pairwise_matrix) ... ok
+test_state_updates_and_no_auto_pickup (test_treasure.TestTreasure.test_state_updates_and_no_auto_pickup) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.197s
+
+OK

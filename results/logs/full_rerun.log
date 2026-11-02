@@ -1,0 +1,49 @@
+test_alpha_beta_not_more_visits (test_adversarial.TestGameTrees.test_alpha_beta_not_more_visits) ... ok
+test_empty_leaf_is_invalid (test_adversarial.TestGameTrees.test_empty_leaf_is_invalid) ... ok
+test_official_tree (test_adversarial.TestGameTrees.test_official_tree) ... ok
+test_reverse_visitation_still_same_value (test_adversarial.TestGameTrees.test_reverse_visitation_still_same_value) ... ok
+test_single_leaf_and_negative (test_adversarial.TestGameTrees.test_single_leaf_and_negative) ... ok
+test_wide_tree_crosscheck (test_adversarial.TestGameTrees.test_wide_tree_crosscheck) ... ok
+test_goal_enter_cost_zero_and_no_overestimate (test_astar.TestAStar.test_goal_enter_cost_zero_and_no_overestimate) ... ok
+test_invalid_shape (test_astar.TestAStar.test_invalid_shape) ... ok
+test_mixed_numeric_and_string_cells (test_astar.TestAStar.test_mixed_numeric_and_string_cells) ... ok
+test_no_path_and_unreachable_weighted (test_astar.TestAStar.test_no_path_and_unreachable_weighted) ... ok
+test_official_maze (test_astar.TestAStar.test_official_maze) ... ok
+test_official_weighted (test_astar.TestAStar.test_official_weighted) ... ok
+test_random_weighted_against_independent_dijkstra (test_astar.TestAStar.test_random_weighted_against_independent_dijkstra) ... ok
+test_start_equals_goal (test_astar.TestAStar.test_start_equals_goal) ... ok
+test_treasure_cost_special_cells_equal_one (test_astar.TestAStar.test_treasure_cost_special_cells_equal_one) ... ok
+test_asymmetric_reverse_distances (test_extension.TestLandmark.test_asymmetric_reverse_distances) ... ok
+test_count_and_validity (test_extension.TestLandmark.test_count_and_validity) ... ok
+test_goal_cost_zero_and_direction (test_extension.TestLandmark.test_goal_cost_zero_and_direction) ... ok
+test_random_maps_oracle_and_consistency (test_extension.TestLandmark.test_random_maps_oracle_and_consistency) ... ok
+test_lambda_zero_is_greedy (test_extension.TestMoveOrdering.test_lambda_zero_is_greedy) ... ok
+test_negative_lambda (test_extension.TestMoveOrdering.test_negative_lambda) ... ok
+test_official_best_value_unchanged (test_extension.TestMoveOrdering.test_official_best_value_unchanged) ... ok
+test_scenarios_reproducible_and_correct (test_extension.TestMoveOrdering.test_scenarios_reproducible_and_correct) ... ok
+test_trace_does_not_change_counts (test_extension.TestMoveOrdering.test_trace_does_not_change_counts) ... ok
+test_all_orderings_utility_consistency (test_treasure.TestTreasure.test_all_orderings_utility_consistency) ... ok
+test_no_other_player_blocking_and_full_depth (test_treasure.TestTreasure.test_no_other_player_blocking_and_full_depth) ... ok
+test_official_h2_h4 (test_treasure.TestTreasure.test_official_h2_h4) ... ok
+test_pairwise_matrix (test_treasure.TestTreasure.test_pairwise_matrix) ... ok
+test_state_updates_and_no_auto_pickup (test_treasure.TestTreasure.test_state_updates_and_no_auto_pickup) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.410s
+
+OK
+
+题目一（迷宫）: [(0, 0), (0, 1), (0, 2), (1, 2), (1, 3), (1, 4), (2, 4), (3, 4)]
+题目二（加权）: 7
+题目三（博弈树）: 5
+题目四（H=2）: {'best_target': 'T2', 'best_value': -1}
+题目四（H=4）: {'best_target': 'T3', 'best_value': 3}
+已生成： /mnt/data/AI-Experiment-2/results
+A* 16 组，博弈搜索 24 组；单配置重复 30 次
+[A] 对手感知排序：开发集调参、官方实例及独立验证集
+    开发集选择 lambda=0.5；记录 210 行
+[B] Landmark：有向距离预计算、8 幅随机地图与每图 100 个查询
+    完成 128 行查询规模汇总
+[C] 规模扩展：10 个随机种子、4/6/8 宝藏和不同深度，记录真实剪枝轨迹
+    完成 320 行搜索对照
+阶段四完成；数据、五张图与实验小结位于 /mnt/data/AI-Experiment-2/results/extension
