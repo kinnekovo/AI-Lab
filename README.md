@@ -61,31 +61,6 @@ AI-Experiment-2/
 └── README.md
 ```
 
-### 模块间关系
-
-```text
-参考地图 / 随机场景
-       │
-       ├──▶ src/astar.py ──────▶ 最短路径与代价
-       │          ▲
-       │          └── src/landmark.py（可选启发式）
-       │
-       └──▶ src/treasure.py ───▶ 博弈状态及合法动作
-                    │
-                    ▼
-             src/adversarial.py ◀── src/move_ordering.py（可选排序）
-                    │
-                    ▼
-        experiments/（对照、消融、规模扩展）
-                    │
-                    ▼
-        results/（CSV、PNG、JSONL、分析摘要）
-
-        tests/ ──▶ 对核心算法与策略进行独立正确性校验
-```
-
-`src/` 不依赖绘图框架，负责算法与状态模型；`experiments/` 只负责构造场景、运行比较、收集指标和生成报告；`tests/` 为算法正确性提供回归保护。这样的分层使得新增启发函数或排序策略时，不必修改整套实验流水线。
-
 ## 快速开始
 
 **环境：** Python 3.10+。核心算法及测试仅依赖 Python 标准库；绘图需要 `numpy` 和 `matplotlib`。
